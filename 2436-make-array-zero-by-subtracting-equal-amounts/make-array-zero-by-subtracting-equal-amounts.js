@@ -3,11 +3,11 @@
  * @return {number}
  */
 var minimumOperations = function minOperations(nums) {
-    const uniqueNumber = new Set();
+    const uniqueNum = new Set();
     for(let i=0; i<nums.length; i++){
         if(nums[i] != 0){
-            uniqueNumber.add(nums[i]);
+            uniqueNum.add(nums[i]);
         }
     }
-    return uniqueNumber.size;
+    return uniqueNum.size;
 }
