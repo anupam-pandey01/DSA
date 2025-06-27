@@ -3,21 +3,20 @@
  * @return {string[]}
  */
 var summaryRanges = function(nums) {
-  let l = 0;
-  let res = [];
-  while(l < nums.length){
-    let start = nums[l];
-    
-    while(l < nums.length-1 && (nums[l] + 1 == nums[l + 1])){
-        l+=1;
+  let res = []
+  let i = 0;
+  while(i < nums.length){
+    let start = nums[i];
+    while((i < nums.length - 1) && (nums[i] + 1 == nums[i + 1])){ 
+        i += 1;
     }
-    if(nums[l] == start){
-        res.push(String(start))
+    if(start == nums[i]){
+        res.push(String(start));
     }
     else{
-        res.push(String(start) + "->" + String(nums[l]))
+        res.push(String(start) + "->" + String(nums[i]))
     }
-    l+=1;
+    i++;
   }
-  return res;
+  return res
 };
