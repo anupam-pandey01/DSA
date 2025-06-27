@@ -5,16 +5,16 @@
 var sortedSquares = function(nums) {
     let left = 0;
     let right = nums.length - 1;
-    let result = [];
-    while(left <= right){ 
+    let res = []
+    while(left <= right){
         if(Math.abs(nums[left]) < Math.abs(nums[right])){
-            result.push(nums[right] ** 2);
+            res.push(nums[right] ** 2);
             right--;
         }
         else{
-            result.push(nums[left] ** 2);
+            res.push(nums[left] ** 2);
             left++;
         }
     }
-    return result.reverse()
+    return res.reverse();
 };
