@@ -3,9 +3,12 @@
  * @return {number}
  */
 var missingNumber = function(nums) {
-    res = nums.length;
-    for(let i=0; i<nums.length; i++){
-        res += i - nums[i]
+    let XOR = 0;
+    let n = nums.length;
+    for(let i=0; i<=n; i++){
+        XOR ^= i; // XOR of all indics;
+        XOR ^= nums[i] // XOR of all nums in array;
     }
-    return res;
+    // XOR ^= n
+    return XOR;
 };
