@@ -3,9 +3,9 @@
  * @return {number}
  */
 var singleNumber = function(nums) {
-    let sing = nums[0];
+    let sin = nums[0];
     for(let i=1; i<nums.length; i++){
-        sing = sing ^ nums[i];
+        sin = sin ^ nums[i]
     }
-    return sing;
+    return sin;
 };
