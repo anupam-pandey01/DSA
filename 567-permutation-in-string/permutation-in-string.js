@@ -4,39 +4,41 @@
  * @return {boolean}
  */
 var checkInclusion = function(s1, s2) {
-    
-    function isFreqSame(freq1, freq2){
-        for(let i=0; i<26; i++){
-            if(freq1[i] != freq2[i]){
-                return false;
-            }
+    if (s1.length > s2.length) return false;
+
+    let s1Count = new Map();
+    let s2Count = new Map();
+
+    // build frequency counts
+    for (let i = 0; i < s1.length; i++) {
+        s1Count.set(s1[i], (s1Count.get(s1[i]) || 0) + 1);
+        s2Count.set(s2[i], (s2Count.get(s2[i]) || 0) + 1);
+    }
+
+    if (isEqual(s1Count, s2Count)) return true;
+
+    let left = 0;
+    for (let right = s1.length; right < s2.length; right++) {
+        // add new character
+        s2Count.set(s2[right], (s2Count.get(s2[right]) || 0) + 1);
+
+        // remove old character
+        s2Count.set(s2[left], s2Count.get(s2[left]) - 1);
+        if (s2Count.get(s2[left]) === 0) {
+            s2Count.delete(s2[left]);
+        }
+        left++;
+
+        if (isEqual(s1Count, s2Count)) return true;
+    }
+
+    return false;
+
+    function isEqual(map1, map2) {
+        if (map1.size !== map2.size) return false;
+        for (let [key, val] of map1) {
+            if (map2.get(key) !== val) return false;
         }
         return true;
     }
-
-    let freq = new Array(26).fill(0);
-    
-    for(let i=0; i<s1.length; i++){
-        let idx = s1[i].charCodeAt(0) - "a".charCodeAt(0)
-        freq[idx]++
-    }
-
-    let windSize = s1.length;
-    for(let i=0; i<s2.length; i++){
-        let windFreq = new Array(26).fill(0);
-        let windIdx=0; 
-        let idx=i;
-       
-        while(windIdx < windSize && idx < s2.length){
-            let freqIdx = s2[idx].charCodeAt(0) - "a".charCodeAt(0);
-            windFreq[freqIdx]++
-            windIdx++;
-            idx++;
-        }
-
-        if(isFreqSame(freq, windFreq)){
-            return true;
-        }
-    }
-    return false;
 };
