@@ -25,9 +25,9 @@ var exist = function(board, word) {
         count[c] = (count[c] || 0) + 1;
     }
 
-    // if (count[word[0]] > count[word[word.length - 1]]) {
-    //     word = word.split('').reverse().join('');
-    // }
+    if (count[word[0]] > count[word[word.length - 1]]) {
+        word = word.split('').reverse().join('');
+    }
 
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
