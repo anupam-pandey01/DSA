@@ -31,7 +31,7 @@ var minWindow = function(s, t) {
             }
 
             if(map.has(s[i]) ){
-                if(map.get(s[i]) === 0) count++;
+                if(map.get(s[i]) == 0) count++;
                 map.set(s[i], map.get(s[i]) + 1)
             }
             i++;
