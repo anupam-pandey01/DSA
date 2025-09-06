@@ -4,16 +4,18 @@
  * @return {number}
  */
 var subarraySum = function(nums, k) {
-    let count = 0;
-    for(let i=0; i<nums.length; i++){
-        let sum = 0;
-        for(let j=i; j<nums.length; j++){
-            sum += nums[j];
-            
-            if(sum == k){
-                count++;
-            }
+    let subNum = { 0: 1 }
+    let total = 0; count = 0;
+
+    for(const n of nums){
+        total+=n;
+
+        if(subNum[total - k] !== undefined){
+            count += subNum[total - k];
         }
+
+        subNum[total] = (subNum[total] || 0) + 1;
     }
+
     return count;
 };
