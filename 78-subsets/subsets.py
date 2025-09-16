@@ -1,17 +1,19 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         ans = []
-        i = 0
-        def allsubset(nums, comb, i, ans):
-            if(i == len(nums)):
-                ans.append(comb.copy())
+        def allsubset(nums, op):
+            if(len(nums) == 0):
+                ans.append(op)
                 return
+
+            op1 = op.copy()
+            op2 = op.copy()
+
+            op2.append(nums[0])
             
-            comb.append(nums[i])
-            allsubset(nums, comb, i+1, ans)
-            comb.pop()
-            allsubset(nums, comb, i+1, ans)
+            allsubset(nums[1:], op1)
+            allsubset(nums[1:], op2)
 
-        allsubset(nums, [], i, ans)
-
+        allsubset(nums, [])
+            
         return ans
