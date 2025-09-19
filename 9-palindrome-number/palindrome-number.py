@@ -3,19 +3,11 @@ class Solution:
         if(x < 0):
             return False
 
-        if(x == 0):
-            return True
+        reverse = 0
+        xCopy = x
         
-        pal_num = ""
-        original = x
+        while( x > 0):
+            reverse = ( reverse * 10 ) + ( x % 10 )
+            x //= 10
 
-        while(x > 0):
-            dig = x % 10
-            x = x // 10
-
-            pal_num += str(dig)
-        
-        if(int(pal_num) == original):
-            return True
-        else: 
-            return False
+        return reverse == xCopy
