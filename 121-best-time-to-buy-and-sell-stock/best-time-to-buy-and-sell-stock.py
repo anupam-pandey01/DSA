@@ -1,10 +1,12 @@
-class Solution(object):
-    def maxProfit(self, prices):
-        maxprofit=0
-        bestbuy=prices[0]
-        for i in range(len(prices)):
-            if(prices[i] > bestbuy):
-                maxprofit = max(maxprofit, prices[i] - bestbuy)
-            bestbuy = min(bestbuy, prices[i])
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        bestbuy = prices[0]
+        maxprofit = 0
+
+        for price in prices:
+            bestbuy = min(bestbuy, price)
+
+            if(price > bestbuy):
+                maxprofit = max(maxprofit, price - bestbuy)
+            
         return maxprofit
-        
