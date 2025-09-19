@@ -1,18 +1,21 @@
-class Solution(object):
-    def isPalindrome(self, x):
-        if x < 0:
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        if(x < 0):
             return False
 
-        reverse = 0
-        xcopy = x
+        if(x == 0):
+            return True
+        
+        pal_num = ""
+        original = x
 
-        while x > 0:
-            reverse = (reverse * 10) + (x % 10)
-            x //= 10
+        while(x > 0):
+            dig = x % 10
+            x = x // 10
+
+            pal_num += str(dig)
         
-        return reverse == xcopy
-        """
-        :type x: int
-        :rtype: bool
-        """
-        
+        if(int(pal_num) == original):
+            return True
+        else: 
+            return False
