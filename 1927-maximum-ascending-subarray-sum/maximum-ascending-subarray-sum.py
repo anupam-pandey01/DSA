@@ -1,17 +1,13 @@
 class Solution:
     def maxAscendingSum(self, nums: List[int]) -> int:
-        j = 1
-        currSum = nums[0]
-        maxSum = nums[0]
-
-        while(j < len(nums)):
-            if(nums[j] > nums[j-1]):
-                currSum += nums[j]
+        i = 1
+        curr_sum = nums[0]
+        max_sum = nums[0]
+        while(i < len(nums)):
+            if(nums[i] > nums[i-1]):
+                curr_sum += nums[i]
             else:
-                currSum = nums[j]
-            
-            maxSum = max(currSum, maxSum)
-            j+=1
-        
-        return maxSum
-
+                curr_sum = nums[i]
+            max_sum = max(curr_sum, max_sum)
+            i+=1
+        return max_sum
