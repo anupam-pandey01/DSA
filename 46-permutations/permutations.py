@@ -1,17 +1,16 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         ans = []
-        def allpermute(nums, comb, ans):
-            if(len(nums) == 0):
-                ans.append(comb)
+
+        def backtrack(start):
+            if(start == len(nums)):
+                ans.append(nums[:])
                 return
             
-            for i  in range(len(nums)):
-                new_nums = nums[ :i] + nums[i+1: ]
-                new_comb = comb + [nums[i]]
+            for i in range(start, len(nums)):
+                nums[i], nums[start] = nums[start], nums[i]
+                backtrack(start + 1)
+                nums[i], nums[start] = nums[start], nums[i]
 
-                allpermute(new_nums, new_comb, ans)
-
-        allpermute(nums, [], ans)
-
+        backtrack(0)
         return ans
