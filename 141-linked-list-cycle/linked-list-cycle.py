@@ -9,10 +9,10 @@ class Solution:
         s = set()
         curr = head
         while(curr is not None):
-            if(curr.next in s):
+            if(curr in s):
                 return True
             else:
-                s.add(curr.next)
+                s.add(curr)
             
             curr = curr.next
         
