@@ -20,20 +20,15 @@ class Solution:
         
         # return head
 
-        curr = head
-        stack = []
+        
+            curr = head
+            prev = None
 
-        while(curr is not None):
-            stack.append(curr.val)
-            curr = curr.next
-        
-        curr = head
-        while(curr is not None):
-            e = stack.pop()
-            curr.val = e
-            curr = curr.next
-        
-        return head
-            
+            while(curr != None ):
+                front = curr.next
+                curr.next = prev
+                prev = curr
+                curr = front
+            return prev
         
         
