@@ -4,12 +4,9 @@ class Solution:
         freq = {}
         heap = []
         
-        for i in range(len(nums)):
-            if nums[i] in freq:
-                freq[nums[i]] = freq[nums[i]] + 1
-            else:
-                freq[nums[i]] = 1
-            
+        for num in nums:
+            freq[num] = freq.get(num, 0) + 1
+        
         for key, val in freq.items():
             heapq.heappush(heap, (val, key))
 
@@ -18,6 +15,7 @@ class Solution:
         
         result = []
         while heap:
-            result.append(heapq.heappop(heap)[1])
-        
+            val = heapq.heappop(heap)
+            result.append(val[1])
+
         return result
