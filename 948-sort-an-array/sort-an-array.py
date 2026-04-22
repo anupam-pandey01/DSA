@@ -7,4 +7,5 @@ class Solution:
         while nums:
             result.append(heapq.heappop(nums))
 
+        
         return result
