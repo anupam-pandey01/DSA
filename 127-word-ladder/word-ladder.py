@@ -14,8 +14,8 @@ class Solution:
 
             while idx < len(word):
                 for c in "abcdefghijklmnopqrstuvwxyz":
-                    if word[idx] == c:
-                        continue
+                    # if word[idx] == c:
+                    #     continue
 
                     newWord = word[:idx] + c + word[idx+1:]
                     if newWord in wordSet:
