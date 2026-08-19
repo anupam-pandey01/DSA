@@ -7,13 +7,16 @@
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         def solve(left, right):
-            if left is None and right is None:
+            if not left and not right:
                 return True
             
-            if left is None or right is None:
+            if not left or not right:
                 return False
-
-            return ((left.val == right.val) and 
-                    solve(left.left, right.right) and
-                    solve(left.right, right.left))
+            
+            return (
+                (left.val == right.val) and
+                solve(left.left, right.right) and
+                solve(left.right, right.left)
+            )
+        
         return solve(root.left, root.right)
